@@ -5,6 +5,7 @@
     --accent: #e1e68b;
     --olive: #a7ab5c;
     --cream: #fdffe2;
+    --padding-base: 1rem;
 }
 
 * {
@@ -23,10 +24,14 @@ img {
 header {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 2rem;
     background-color: var(--primary-green);
-    padding: 1rem;
+    padding: var(--padding-base);
+}
+
+main {
+    background-color: var(--cream);
 }
 
 .logo-box {
@@ -39,7 +44,27 @@ header {
     gap: 1rem;
 }
 
+/* Selects links inside the nav's list */
 .navlist a {
     color: var(--cream);
     text-decoration: none;
+}
+
+.navlist a:hover {
+    text-decoration: underline;
+}
+
+
+#product-search {
+    width: 35%;
+    /* This makes the space between the search bar and the login button the largest it can be */
+    margin-right: auto;
+}
+
+.searchbar {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    border: solid 2px var(--secondary-green);
+    outline: none;
 }
