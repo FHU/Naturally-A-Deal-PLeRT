@@ -21,6 +21,12 @@ img {
     height: 100%;
 }
 
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
 header {
     width: 100%;
     display: flex;
@@ -28,10 +34,12 @@ header {
     gap: 2rem;
     background-color: var(--primary-green);
     padding: var(--padding-base);
+    position: fixed;
 }
 
 main {
     background-color: var(--cream);
+    padding-top: 7rem;
 }
 
 .logo-box {
@@ -67,4 +75,10 @@ main {
     border-radius: 1rem;
     border: solid 2px var(--secondary-green);
     outline: none;
+}
+
+footer {
+    width: 100%;
+    background-color: var(--secondary-green);
+    padding: var(--padding-base);
 }
