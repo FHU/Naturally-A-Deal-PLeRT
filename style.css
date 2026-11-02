@@ -100,6 +100,7 @@ header {
 
 .navlist {
     display: flex;
+    align-items: baseline;
     list-style: none;
     gap: 1rem;
 }
@@ -112,6 +113,15 @@ header {
 
 .navlist a:hover {
     text-decoration: underline;
+}
+
+.dot-separator {
+    content: '';
+    background-color: var(--olive);
+    border-radius: 0.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    display: inline-block;
 }
 
 
