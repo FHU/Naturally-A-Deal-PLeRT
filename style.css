@@ -3,6 +3,7 @@
     --secondary-green: #112d1f;
     --text-black: #0b0c07;
     --accent: #e1e68b;
+    --lighter-accent: color-mix(in lch, var(--accent) 70%, white 30%);
     --olive: #a7ab5c;
     --cream: #fdffe2;
     --padding-base: 1rem;
@@ -44,10 +45,18 @@ img {
     font-size: 1rem;
 }
 
+.button:hover {
+    cursor: pointer;
+}
+
 .button-primary-dark {
     background-color: var(--primary-green);
     border: none;
     color: var(--accent);
+}
+
+.button-primary-dark:hover {
+    background-color: var(--secondary-green);
 }
 
 .button-primary-light {
@@ -56,16 +65,30 @@ img {
     color: var(--primary-green);
 }
 
+.button-primary-light:hover {
+    background-color: var(--lighter-accent);
+}
+
 .button-secondary-dark {
     background-color: rgba(0,0,0,0);
     border: 4px solid var(--primary-green); 
     color: var(--primary-green);
 }
 
+.button-secondary-dark:hover {
+    border-color: var(--secondary-green);
+    color: var(--secondary-green);
+}
+
 .button-secondary-light {
     background-color: rgba(0,0,0,0);
     border: 4px solid var(--accent); 
     color: var(--accent);
+}
+
+.button-secondary-light:hover {
+    border-color: var(--lighter-accent);
+    color: var(--lighter-accent);
 }
 
 
