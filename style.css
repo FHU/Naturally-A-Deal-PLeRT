@@ -15,6 +15,22 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+h1, h2, h3 {
+    color: var(--primary-green);
+}
+
+h4, h5, h6 {
+    color: var(--secondary-green);
+}
+
+h1 {
+    border-bottom: solid 2px var(--olive);
+}
+
+p {
+    color: var(--text-black);
+}
+
 /* Images will resize to fit the box they are in. Put all images inside a dive, and resize that div as needed. */
 img {
     width: 100%;
@@ -35,11 +51,6 @@ header {
     background-color: var(--primary-green);
     padding: var(--padding-base);
     position: fixed;
-}
-
-main {
-    background-color: var(--cream);
-    padding-top: 7rem;
 }
 
 .logo-box {
@@ -75,6 +86,16 @@ main {
     border-radius: 1rem;
     border: solid 2px var(--secondary-green);
     outline: none;
+}
+
+main {
+    background-color: var(--cream);
+    padding-top: 7rem;
+}
+
+.container {
+    height: 100%;
+    padding: var(--padding-base);
 }
 
 footer {
