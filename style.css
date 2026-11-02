@@ -37,41 +37,32 @@ img {
     height: 100%;
 }
 
-.button-primary-dark {
+.button {
     border-radius: 10px;
     padding: 0.75rem 1.25rem;
     font-weight: bold;
     font-size: 1rem;
+}
+
+.button-primary-dark {
     background-color: var(--primary-green);
     border: none;
     color: var(--accent);
 }
 
 .button-primary-light {
-    border-radius: 10px;
-    padding: 0.75rem 1.25rem;
-    font-weight: bold;
-    font-size: 1rem;
     background-color: var(--accent);
     border: none;
     color: var(--primary-green);
 }
 
 .button-secondary-dark {
-    border-radius: 10px;
-    padding: 0.75rem 1.25rem;
-    font-weight: bold;
-    font-size: 1rem;
     background-color: rgba(0,0,0,0);
     border: 4px solid var(--primary-green); 
     color: var(--primary-green);
 }
 
 .button-secondary-light {
-    border-radius: 10px;
-    padding: 0.75rem 1.25rem;
-    font-weight: bold;
-    font-size: 1rem;
     background-color: rgba(0,0,0,0);
     border: 4px solid var(--accent); 
     color: var(--accent);
