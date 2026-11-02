@@ -1,3 +1,12 @@
+:root {
+    --primary-green: #284a39;
+    --secondary-green: #112d1f;
+    --text-black: #0b0c07;
+    --accent: #e1e68b;
+    --olive: #a7ab5c;
+    --cream: #fdffe2;
+}
+
 * {
     margin: 0;
     padding: 0;
