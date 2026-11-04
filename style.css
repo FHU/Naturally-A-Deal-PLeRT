@@ -161,6 +161,49 @@ main {
     padding: var(--padding-base);
 }
 
+.catalog-layout {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    align-items: start;
+}
+
+.product-filters {
+    display: flex;
+    flex-direction: column;
+    /* Header is fixed and about 7rem tall */
+    position: sticky;
+    top: 8rem;
+}
+
+.product-filters h2 {
+    width: 100%;
+}
+
+.filter-dropdown {
+    background-color: var(--lighter-accent);
+}
+
+#cat1 {
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+#cat5 {
+    border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.filter-dropdown summary {
+    padding: 0.75rem;
+    font-weight: bold;
+    color: var(--primary-green);
+    cursor: pointer;
+}
+
+.filter-dropdown label {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: var(--text-black);
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
