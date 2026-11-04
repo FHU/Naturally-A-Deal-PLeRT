@@ -7,6 +7,7 @@
     --olive: #a7ab5c;
     --cream: #fdffe2;
     --padding-base: 1rem;
+    --white: #ffffff;
 }
 
 * {
@@ -157,8 +158,26 @@ main {
 }
 
 .container {
-    height: 100%;
     padding: var(--padding-base);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--padding-base);
+    padding: 0 var(--padding-base) var(--padding-base);
+    align-items: start;
+    margin: var(--padding-base);
+}
+
+.product-card {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    height: 24rem;
+    width: auto;
+    padding: var(--padding-base);
+    border-radius: 0.75rem;
+    background-color: var(--white);
 }
 
 footer {
