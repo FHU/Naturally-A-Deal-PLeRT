@@ -44,54 +44,53 @@ img {
     padding: 0.75rem 1.25rem;
     font-weight: bold;
     font-size: 1rem;
-}
 
-.button:hover {
-    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .button-primary-dark {
     background-color: var(--primary-green);
     border: none;
     color: var(--accent);
-}
 
-.button-primary-dark:hover {
-    background-color: var(--secondary-green);
+    &:hover {
+        background-color: var(--secondary-green);
+    }
 }
 
 .button-primary-light {
     background-color: var(--accent);
     border: none;
     color: var(--primary-green);
-}
 
-.button-primary-light:hover {
-    background-color: var(--lighter-accent);
+    &:hover {
+        background-color: var(--lighter-accent);
+    }
 }
 
 .button-secondary-dark {
     background-color: rgba(0,0,0,0);
     border: 4px solid var(--primary-green); 
     color: var(--primary-green);
-}
 
-.button-secondary-dark:hover {
-    border-color: var(--secondary-green);
-    color: var(--secondary-green);
+    &:hover {
+        border-color: var(--secondary-green);
+        color: var(--secondary-green);
+    }
 }
 
 .button-secondary-light {
     background-color: rgba(0,0,0,0);
     border: 4px solid var(--accent); 
     color: var(--accent);
-}
 
-.button-secondary-light:hover {
-    border-color: var(--lighter-accent);
+    &:hover {
+        border-color: var(--lighter-accent);
     color: var(--lighter-accent);
+    }
 }
-
 
 body {
     min-height: 100vh;
@@ -118,26 +117,30 @@ header {
     align-items: baseline;
     list-style: none;
     gap: 1rem;
-}
 
-/* Selects links inside the nav's list */
-.navlist a {
-    color: var(--cream);
-    text-decoration: none;
-}
+    /* Selects links inside the nav's list */
+    & a {
+        color: var(--cream);
+        text-decoration: none;
 
-.navlist a:hover {
-    text-decoration: underline;
-}
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
-.dot-separator {
+    & li + li::before {
     content: '';
     background-color: var(--olive);
     border-radius: 0.25rem;
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.35rem;
+    height: 0.35rem;
+    margin-right: 1rem;
+    vertical-align: middle;
     display: inline-block;
 }
+}
+
+
 
 
 #product-search {
@@ -173,14 +176,27 @@ main {
     /* Header is fixed and about 7rem tall */
     position: sticky;
     top: 8rem;
-}
 
-.product-filters h2 {
-    width: 100%;
+    & h2 {
+        width: 100%;
+    }
 }
 
 .filter-dropdown {
     background-color: var(--lighter-accent);
+
+    & summary {
+        padding: 0.75rem;
+        font-weight: bold;
+        color: var(--primary-green);
+        cursor: pointer;
+    }
+
+    & label {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        color: var(--text-black);
+    }
 }
 
 #cat1 {
@@ -189,19 +205,6 @@ main {
 
 #cat5 {
     border-radius: 0 0 0.75rem 0.75rem;
-}
-
-.filter-dropdown summary {
-    padding: 0.75rem;
-    font-weight: bold;
-    color: var(--primary-green);
-    cursor: pointer;
-}
-
-.filter-dropdown label {
-    display: block;
-    padding: 0.5rem 0.75rem;
-    color: var(--text-black);
 }
 
 .product-grid {

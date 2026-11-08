@@ -13,7 +13,7 @@
 </head>
 
 <body>
-     <header>
+    <header>
         <!-- The logo sizes itself to fit the logo box. If you want to resize the logo, resize the logo box instead. -->
         <div class="logo-box">
             <a href="index.html"><img src="assets/images/Naturally-a-Deal-logo-white.webp" alt=""></a>
@@ -21,13 +21,10 @@
         <nav>
             <ul class="navlist">
                 <li><a href="catalog.html">Products</a></li>
-                <li aria-hidden="true"><div class="dot-separator"></div></li>
+                <!-- These other links lead to the original naturally a deal page, because it is notrelevant to what we are trying to redesign. -->
                 <li><a href="https://naturallyadeal.com/about-us/">About us</a></li>
-                <li aria-hidden="true"><div class="dot-separator"></div></li>
                 <li><a href="https://naturallyadeal.com/products-vendors/">Vendors</a></li>
-                <li aria-hidden="true"><div class="dot-separator"></div></li>
                 <li><a href="https://naturallyadeal.com/contact/">Contact us</a></li>
-                <li aria-hidden="true"><div class="dot-separator"></div></li>
                 <li><a href="https://naturallyadeal.com/faq/">FAQ</a></li>
             </ul>
         </nav>
@@ -36,10 +33,11 @@
         </form>
         <a href="login.html"><button class="button button-primary-light">Login or sign up</button></a>
     </header>
+    
     <main>
         <div class="container">
             <h1>Log in</h1>
-            <form id="login-form">
+            <form>
                 <fieldset>
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email">
@@ -54,7 +52,7 @@
                 </fieldset>
                 <input type="submit" value="Log in" class="button button-primary-dark">
             </form>
-            <p><a href="signup.html"><button class="button button-primary-light">Sign up</button></a></p>
+            <p>Or: <a href="signup.html">Sign up</a></p>
         </div>
     </main>
 </body>
