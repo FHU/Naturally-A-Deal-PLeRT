@@ -3,7 +3,7 @@
 || LAYER ORDER: lowest priorty first. ||
 ** ================================== */
 
-@layer reset, tokens, grounds, base;
+@layer reset, tokens, grounds, base, layout;
 
 /* ============================================================= **
 || RESET LAYER: The absolute minimum, designed to be overwritten ||
@@ -109,6 +109,7 @@
         --text-button:      1.125rem;  /* 18px - Button's label size */
 
         /* Leading: The line height */
+        --leading-title:    1.5;
         --leading-heading:  1;
         --leading-loose:    1.333;
         --leading-body:     1.333;
@@ -153,14 +154,17 @@
         /* | Layout: The size of major elements of the layout | */
         /* | ------------------------------------------------ | */
 
-        --container:        71.25rem;
-        --container-wide:   80rem;    
-        --header-height:    5.625rem; 
-        --footer-height:    5.625rem;
-        --logo-width:       11.875rem;
-        --feature-width:    12.5rem;  
-        --icon-size:        7.5rem;   
-        --section-min:      38.75rem; 
+        /* Commented variables are unused */
+        --container:            71.25rem;
+        /* --container-wide:    80rem;     */
+        --container-catalog:    100rem;
+        --header-height:        5.625rem; 
+        --footer-height:        5.625rem;
+        --logo-width:           11.875rem;
+        --filters-width:        14rem;
+        /* --feature-width:     12.5rem;   */
+        /* --icon-size:         7.5rem;    */
+        /* --section-min:       38.75rem;  */
 
     }
 }
@@ -271,6 +275,9 @@
         letter-spacing: var(--tracking-snug);
         background-color: var(--color-background);
         color: var(--color-text);
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
     }
 
     /* Headings */
@@ -285,6 +292,7 @@
     h1 {
         border-bottom: solid var(--border-line) var(--color-decoration);
         font-size: var(--text-heading-lg);
+        line-height: var(--leading-title);
     }
     h2 { font-size: var(--text-heading-md); }
     h3 { font-size: var(--text-heading-sm); }
@@ -320,6 +328,52 @@
     }
 }
 
+/* ========================================================================================== **
+|| LAYOUT LAYER: The sizes of the broad layout of the site, such as sections or the container ||
+** ========================================================================================== */
+
+@layer layout {
+    .section {
+        padding-block: var(--section-pad-y);
+        padding-inline: var(--gutter);
+    }
+
+    .container {
+        inline-size: min(100%, var(--container));
+        margin-inline: auto;
+    }
+
+    .container-catalog {
+        inline-size: min(100%, var(--container-catalog));
+    }
+
+    .catalog-layout {
+        display: grid;
+        grid-template-columns: var(--filters-width) 1fr;
+        align-items: start;
+    }
+
+    .product-filters {
+        display: flex;
+        flex-direction: column;
+        /* Header is fixed and about 7rem tall */
+        position: sticky;
+        top: 8rem;
+    }
+
+    .filter-list {
+        border-radius: var(--radius-stand);
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gap);
+        align-items: start;
+        margin: var(--gap);
+    }
+}
+
 .button {
     border-radius: var(--radius-stand);
     padding: var(--button-pad-y) var(--button-pad-x);
@@ -351,12 +405,6 @@
         background-color: var(--color-hover-action);
         color: var(--color-on-action);
     }
-}
-
-body {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
 }
 
 header {
@@ -411,32 +459,6 @@ header {
     color: var(--palette-black);
 }
 
-.container {
-    padding: var(--section-pad-y) var(--gutter) ;
-}
-
-.catalog-layout {
-    display: grid;
-    grid-template-columns: 14rem 1fr;
-    align-items: start;
-}
-
-.product-filters {
-    display: flex;
-    flex-direction: column;
-    /* Header is fixed and about 7rem tall */
-    position: sticky;
-    top: 8rem;
-
-    & h2 {
-        width: 100%;
-    }
-}
-
-.filter-list {
-    border-radius: var(--radius-stand);
-}
-
 .filter-dropdown {
     & summary {
         padding: 0.75rem;
@@ -450,15 +472,6 @@ header {
         padding: 0.5rem 0.75rem;
         color: var(--color-text);
     }
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--gap);
-    padding: 0 var(--padding-base) var(--padding-base);
-    align-items: start;
-    margin: var(--padding-base);
 }
 
 .product-card {
