@@ -154,15 +154,18 @@ header {
     border: solid 2px var(--secondary-green);
     outline: none;
 }
+.billing-address {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
 
 main {
     background-color: var(--cream);
     padding-top: 7rem;
 }
 
-.container {
-    padding: var(--padding-base);
-}
+
 
 .catalog-layout {
     display: grid;
