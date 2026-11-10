@@ -154,7 +154,7 @@
         /* | Layout: The size of major elements of the layout | */
         /* | ------------------------------------------------ | */
 
-        /* Commented variables are unused */
+        /* Commented variables are currently unused */
         --container:            71.25rem;
         /* --container-wide:    80rem;     */
         --container-catalog:    100rem;
@@ -351,6 +351,17 @@
         inline-size: min(100%, var(--container-catalog));
     }
 
+    header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--gap);
+        block-size: var(--header-height);
+        position: sticky;
+        padding-inline: var(--gutter);
+    }
+
     .catalog-layout {
         display: grid;
         grid-template-columns: var(--filters-width) 1fr;
@@ -384,6 +395,11 @@
 
 @layer components {
     
+    /* | -------------------------------------------------------------- | */
+    /* | General components: Components used across the site as a whole | */
+    /* | -------------------------------------------------------------- | */
+
+    /* Buttons */
     .button {
         display: inline-flex;
         align-items: center;
@@ -420,17 +436,20 @@
         }
     }
 
-    header {
+    /* Searchbars */
+    .searchbar {
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--gap);
-        block-size: var(--header-height);
-        position: sticky;
-        padding-inline: var(--gutter);
+        padding: 0.75rem;
+        border-radius: var(--radius-pill);
+        border: solid var(--border-pill) var(--color-text);
+        color: var(--palette-black);
     }
 
+    /* | ------------------------------------------------------------------------ | */
+    /* | Section components: Components dedicated to a specific part of the site  | */
+    /* | ------------------------------------------------------------------------ | */
+
+    /* Header */
     .logo-box {
         inline-size: var(--logo-width);
         flex-shrink: 0;
@@ -459,14 +478,7 @@
         flex-grow: 1;
     }
 
-    .searchbar {
-        width: 100%;
-        padding: 0.75rem;
-        border-radius: var(--radius-pill);
-        border: solid var(--border-pill) var(--color-text);
-        color: var(--palette-black);
-    }
-
+    /* Catalog Filters */
     .filter-dropdown {
         & summary {
             padding: 0.75rem;
@@ -482,6 +494,7 @@
         }
     }
 
+    /* Product cards */
     .product-card {
         aspect-ratio: 3 / 4;
         overflow: hidden;
@@ -491,6 +504,7 @@
         border-radius: var(--radius-stand);
     }
 
+    /* Footer */
     footer {
         width: 100%;
         block-size: var(--footer-height);
