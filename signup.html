@@ -13,11 +13,9 @@
 </head>
 
 <body>
-    <header>
+    <header class="ground-green">
         <!-- The logo sizes itself to fit the logo box. If you want to resize the logo, resize the logo box instead. -->
-        <div class="logo-box">
-            <a href="index.html"><img src="assets/images/Naturally-a-Deal-logo-white.webp" alt=""></a>
-        </div>
+        <a class="logo-box" href="index.html"><img src="assets/images/Naturally-a-Deal-logo-white.webp" alt=""></a>
         <nav>
             <ul class="navlist">
                 <li><a href="catalog.html">Products</a></li>
@@ -31,83 +29,84 @@
         <form id="product-search">
             <input type="search" placeholder="Search products" class="searchbar">
         </form>
-        <a href="login.html"><button class="button button-primary-light">Login or sign up</button></a>
+        <a href="login.html"><button class="button button-primary">Login or sign up</button></a>
     </header>
 
-    <main>
+    <main class="ground-cream">
         <div class="container">
-            
-            <form class="form">
+            <section class="section">
                 <h1>Sign up</h1>
-                <fieldset>
-                    <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="fname">
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lname">
-                </fieldset>
-                <fieldset>
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email">
-                </fieldset>
-                <fieldset>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
-                    <p>6 characters minimum</p>
-                </fieldset>
-                <fieldset>
-                    <label for="coop-group">Choose a Co-op Group</label>
-                    <p>A co-op group is the area you will pick up your items in.</p>
-                    <select name="coop-group" id="coop-group">
-                        <optgroup label="Alabama">
-                            <option value="al-placeholder">AL-Placeholder</option>
-                        </optgroup>
-                        <optgroup label="Georgia">
-                            <option value="ga-placeholder">GA-Placeholder</option>
-                        </optgroup>
-                        <optgroup label="Michigan">
+                <form class="form">
+                    <fieldset>
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="fname">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lname">
+                    </fieldset>
+                    <fieldset>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email">
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password">
+                        <p>6 characters minimum</p>
+                    </fieldset>
+                    <fieldset>
+                        <label for="coop-group">Choose a Co-op Group</label>
+                        <p>A co-op group is the area you will pick up your items in.</p>
+                        <select name="coop-group" id="coop-group">
+                            <optgroup label="Alabama">
+                                <option value="al-placeholder">AL-Placeholder</option>
+                            </optgroup>
+                            <optgroup label="Georgia">
+                                <option value="ga-placeholder">GA-Placeholder</option>
+                            </optgroup>
+                            <optgroup label="Michigan">
 
-                        </optgroup>
-                        <optgroup label="Mississippi">
+                            </optgroup>
+                            <optgroup label="Mississippi">
 
-                        </optgroup>
-                        <optgroup label="Nebraska">
+                            </optgroup>
+                            <optgroup label="Nebraska">
 
-                        </optgroup>
-                        <optgroup label="North Carolina">
+                            </optgroup>
+                            <optgroup label="North Carolina">
 
-                        </optgroup>
-                        <optgroup label="South Carolina">
+                            </optgroup>
+                            <optgroup label="South Carolina">
 
-                        </optgroup>
-                        <optgroup label="Tennessee">
+                            </optgroup>
+                            <optgroup label="Tennessee">
 
-                        </optgroup>
-                        <optgroup label="Virginia">
+                            </optgroup>
+                            <optgroup label="Virginia">
 
-                        </optgroup>
-                    </select>
-                </fieldset>
-                <h2>Billing Address</h2>
-                <fieldset class="billing-address">
-                    <label for="address">Address 1</label>
-                    <input type="text" id="address" name="address">
-                    <label for="room">Address 2 (Optional)</label>
-                    <input type="text" id="room" name="room">
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city">
-                    <label for="state">State</label>
-                    <input type="text" id="state" name="state">
-                    <label for="zip">Zip</label>
-                    <input type="text" id="zip" name="zip">
-                </fieldset>
-                <fieldset>
-                    <input type="checkbox" id="phone-consent" name="phone-consent">
-                    <label for="phone-consent">Receive phone calls if there is a issue with your order</label>
-                    <label for="phone-number">Phone</label>
-                    <input type="text" id="phone-number" name="phone-number">
-                </fieldset>
-                <input type="submit" value="Sign up" class="button button-primary-dark">
-            </form>
+                            </optgroup>
+                        </select>
+                    </fieldset>
+                    <h2>Billing Address</h2>
+                    <fieldset>
+                        <label for="address">Address 1</label>
+                        <input type="text" id="address" name="address">
+                        <label for="room">Address 2 (Optional)</label>
+                        <input type="text" id="room" name="room">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state">
+                        <label for="zip">Zip</label>
+                        <input type="text" id="zip" name="zip">
+                    </fieldset>
+                    <fieldset>
+                        <input type="checkbox" id="phone-consent" name="phone-consent">
+                        <label for="phone-consent">Receive phone calls if there is a issue with your order</label>
+                        <label for="phone-number">Phone</label>
+                        <input type="text" id="phone-number" name="phone-number">
+                    </fieldset>
+                    <input type="submit" value="Sign up" class="button button-primary">
+                </form>
+            </section>
         </div>
     </main>
 </body>

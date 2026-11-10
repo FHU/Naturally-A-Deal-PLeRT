@@ -1,236 +1,526 @@
-:root {
-    --primary-green: #284a39;
-    --secondary-green: #112d1f;
-    --text-black: #0b0c07;
-    --accent: #e1e68b;
-    --lighter-accent: color-mix(in lch, var(--accent) 65%, white 35%);
-    --olive: #a7ab5c;
-    --cream: #fdffe2;
-    --padding-base: 1rem;
-    --white: #ffffff;
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+/* ================================== **
+|| LAYER ORDER: lowest priorty first. ||
+** ================================== */
 
-h1, h2, h3 {
-    color: var(--primary-green);
-}
+@layer reset, tokens, grounds, base, layout, components;
 
-h4, h5, h6 {
-    color: var(--secondary-green);
-}
+/* ============================================================= **
+|| RESET LAYER: The absolute minimum, designed to be overwritten ||
+** ============================================================= */
 
-h1 {
-    border-bottom: solid 2px var(--olive);
-}
-
-p {
-    color: var(--text-black);
-}
-
-/* Images will resize to fit the box they are in. Put all images inside a div, and resize that div as needed. */
-img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.button {
-    border-radius: 10px;
-    padding: 0.75rem 1.25rem;
-    font-weight: bold;
-    font-size: 1rem;
-
-    &:hover {
-        cursor: pointer;
+@layer reset {
+    :where(*, *::before, *::after) {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-}
 
-.button-primary-dark {
-    background-color: var(--primary-green);
-    border: none;
-    color: var(--accent);
-
-    &:hover {
-        background-color: var(--secondary-green);
+    :where(ul, ol) {
+        list-style: none;
     }
-}
 
-.button-primary-light {
-    background-color: var(--accent);
-    border: none;
-    color: var(--primary-green);
-
-    &:hover {
-        background-color: var(--lighter-accent);
-    }
-}
-
-.button-secondary-dark {
-    background-color: rgba(0,0,0,0);
-    border: 4px solid var(--primary-green); 
-    color: var(--primary-green);
-
-    &:hover {
-        border-color: var(--secondary-green);
-        color: var(--secondary-green);
-    }
-}
-
-.button-secondary-light {
-    background-color: rgba(0,0,0,0);
-    border: 4px solid var(--accent); 
-    color: var(--accent);
-
-    &:hover {
-        border-color: var(--lighter-accent);
-    color: var(--lighter-accent);
-    }
-}
-
-body {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr auto;
-}
-
-header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    background-color: var(--primary-green);
-    padding: var(--padding-base);
-    position: fixed;
-}
-
-.logo-box {
-    height: 5rem;
-}
-
-.navlist {
-    display: flex;
-    align-items: baseline;
-    list-style: none;
-    gap: 1rem;
-
-    /* Selects links inside the nav's list */
-    & a {
-        color: var(--cream);
+    :where(a) {
         text-decoration: none;
+    }
+
+    /* Images will resize to fit the box they are in. Put all images inside a div, and resize that div as needed. */
+    :where(img, svg, video) {
+        display: block;
+        max-inline-size: 100%;
+        block-size: auto;
+    }
+
+    :where(button, input, select, textarea) {
+        font: inherit;
+        color: inherit;
+    }
+}
+
+/* =================================================================== **
+|| TOKEN LAYER: Sets variables for use across the rest of the CSS file ||
+** =================================================================== */
+
+@layer tokens {
+    :root {
+        color-scheme: light;
+
+        /* | ------------------------------- | */
+        /* | Colors: The colors of the site. | */
+        /* | ------------------------------- | */
+
+        /* Color palette: The base colors across the site, regardless of location */
+        /* Do NOT use these directly in CSS! Use the color roles and grounds instead. */
+
+        --palette-green:        #284a39;
+        --palette-dark-green:   #112d1f;
+        --palette-black:        #0b0c07;
+        --palette-butter:       #e1e68b;
+        --palette-light-butter:   color-mix(in lch, var(--palette-butter) 65%, white);
+        --palette-olive:        #a7ab5c;
+        --palette-cream:        #fdffe2;
+        --palette-white:        #ffffff;
+
+
+        /* Color roles: Coloration sorted by role, allowing colors to be changed       */
+        /* based on section instead of having to manually change each selector's color */
+
+        --color-background:     var(--palette-cream);       /* Background color */
+        --color-text:           var(--palette-green);       /* Text color */
+        --color-heading:        var(--palette-green);       /* Heading color */
+        --color-link:           var(--palette-dark-green);  /* Link color */
+        --color-action:         var(--palette-green);       /* Buttons, submissions, etc */
+        --color-on-action:      var(--palette-butter);      /* Labels for buttons, submissions, etc */
+        --color-hover-action:   var(--palette-dark-green);  /* Color change when hovvering buttons, submissions, etc */
+        --color-decoration:     var(--palette-olive);       /* Dots, lines, and other minor decorations */
+        --color-focus:          var(--palette-green);       /* Outline around selected items like search bars */
+
+        /* | ----------------------------------- | */
+        /* | Typography: Handling font and sizes | */
+        /* | ----------------------------------- | */
+
+        --font-sans: "Open Sans", system-ui, sans-serif;
+
+        /* Font weight scale: The boldness of the font */
+        --weight-light:     300;
+        --weight-regular:   400;
+        --weight-medium:    500;
+        --weight-semibold:  600;
+        --weight-bold:      700;
+        --weight-heavy:     800;
+
+        /* Tracking: The size of the space between characters*/
+        --tracking-tight:   -1px;
+        --tracking-snug:    -0.5px;
+
+        /* Type Scale: The overally size of the text */
+        --text-heading-xl:  clamp(2.25rem, 1.57rem + 2.73vw, 3.75rem);  /* 50px to 90px */
+        --text-heading-lg:  clamp(2.25rem, 1.91rem + 1.36vw, 3rem);     /* 36px to 60px */
+        --text-heading-md:  2.063rem;                                   /* 33px */
+        --text-heading-sm:  1.75;                                       /* 28px */
+        --text-heading-xs:  1.438rem;                                   /* 23px */
+        --text-heading-2xs: 1.188rem;                                   /* 19px */
+
+
+        --text-base:        1rem;       /* 16px - Basic text size */
+        --text-small:       0.875rem;   /* 14px - Small text size */
+        --text-fine:        0.75rem;    /* 12px - Exremely small text size */
+
+        --text-button:      1.125rem;  /* 18px - Button's label size */
+
+        /* Leading: The line height */
+        --leading-title:    1.5;
+        --leading-heading:  1;
+        --leading-loose:    1.333;
+        --leading-body:     1.333;
+        --leading-small:    1.714;
+
+        /* | ------------------------------------------------- | */
+        /* | Spacing: The space betweeen elements on the page  | */
+        /* | ------------------------------------------------- | */
+
+        /* Spacing Palette: A set of standardized spacing sizes */
+        /* Do NOT use these directly in CSS! Use the spacing roles instead. */
+        --space-xs:     0.625rem;
+        --space-s:      1.25rem;
+        --space-m:      1.5625rem;
+        --space-l:      1.875rem;
+        --space-xl:     3.125rem;
+        --space-2xl:    6.25rem;
+        --space-3xl:    9.375rem;
+
+        /* Spacing Roles: Spacing sorted by role.  */
+        --gap:              var(--space-s);
+        --gutter:           var(--space-m);
+        --section-pad-y:    var(--space-l);
+        --button-pad-y:     0.75rem;
+        --button-pad-x:      1.5rem;
+
+        /* | --------------------------------------------------------------------------- | */
+        /* | Shape: The border radius, size, and dimensionality effects such as shadows. | */
+        /* | --------------------------------------------------------------------------- | */
+        
+        --radius-stand:    1rem;    /* Standard border radius for most items */
+        --radius-pill:  100vmax;    /* Border radius for pill-shaped items */
+
+        --border-button:    3px;    /* Border size for button */
+        --border-pill:      2px;    /* Border size for pill-shaped items */
+        --border-line:      2px;    /* Line size for divider lines */
+
+        --card-shadow-drop: 0 0.4rem 1.5rem 0 rgb(0 0 0 / 0.2);
+        --card-shadow-inset: inset 0 0 1rem 0 rgb(0 0 0 / 0.2);
+
+        /* | ------------------------------------------------ | */
+        /* | Layout: The size of major elements of the layout | */
+        /* | ------------------------------------------------ | */
+
+        /* Commented variables are currently unused */
+        --container:            71.25rem;
+        /* --container-wide:    80rem;     */
+        --container-catalog:    100rem;
+        --header-height:        5.625rem; 
+        --footer-height:        5.625rem;
+        --logo-width:           11.875rem;
+        --filters-width:        14rem;
+        /* --feature-width:     12.5rem;   */
+        /* --icon-size:         7.5rem;    */
+        /* --section-min:       38.75rem;  */
+
+    }
+}
+
+/* ============================================================================= **
+|| GROUNDS LAYER: Sets different color palettes that can be assigned to sections ||
+** ============================================================================= */
+
+@layer grounds {
+
+    /* To use a ground, add the desired ground's class to the section/container you want to be recolored. */
+
+    /* IMPORTANT: To add a new ground, you must first add it to this :where's list! */
+    /* Otherwise, it won't change the background and color of the section its assigned to. */
+    :where(.ground-cream, .ground-green, .ground-deep, .ground-butter, .ground-light-butter, .ground-white) {
+        background-color: var(--color-background);
+        color: var(--color-text);
+    }
+
+    /* Cream: The majority of the page's color palette */
+    .ground-cream {
+        --color-background:     var(--palette-cream);       /* Background color */
+        --color-text:           var(--palette-green);       /* Text color */
+        --color-heading:        var(--palette-green);       /* Heading color */
+        --color-link:           var(--palette-dark-green);  /* Link color */
+        --color-action:         var(--palette-green);       /* Buttons, submissions, etc */
+        --color-on-action:      var(--palette-butter);      /* Labels for buttons, submissions, etc */
+        --color-hover-action:   var(--palette-dark-green);  /* Color change when hovvering buttons, submissions, etc */
+        --color-decoration:     var(--palette-olive);       /* Dots, lines, and other minor decorations */
+        --color-focus:          var(--palette-green);       /* Outline around selected items like search bars */
+    }
+
+    /* Green: The header */
+    .ground-green {
+        --color-background:     var(--palette-green);   
+        --color-text:           var(--palette-cream);      
+        --color-heading:        var(--palette-cream);       
+        --color-link:           var(--palette-cream);  
+        --color-action:         var(--palette-butter);       
+        --color-on-action:      var(--palette-green);      
+        --color-hover-action:   var(--palette-light-butter);  
+        --color-decoration:     var(--palette-olive);       
+        --color-focus:          var(--palette-butter);
+    }
+
+    /* Deep: Dark green, the footer */
+    .ground-deep {
+        --color-background:     var(--palette-dark-green);   
+        --color-text:           var(--palette-cream);      
+        --color-heading:        var(--palette-butter);       
+        --color-link:           var(--palette-butter);  
+        --color-action:         var(--palette-butter);       
+        --color-on-action:      var(--palette-green);      
+        --color-hover-action:   var(--palette-light-butter);  
+        --color-decoration:     var(--palette-olive);       
+        --color-focus:          var(--palette-olive);
+    }
+
+    /* Butter: The color of side sections such as the filters or the cart lists. */
+    .ground-butter {
+        --color-background:     var(--palette-butter);   
+        --color-text:           var(--palette-black);      
+        --color-heading:        var(--palette-black);       
+        --color-link:           var(--palette-dark-green);  
+        --color-action:         var(--palette-green);       
+        --color-on-action:      var(--palette-cream);      
+        --color-hover-action:   var(--palette-dark-green);  
+        --color-decoration:     var(--palette-olive);       
+        --color-focus:          var(--palette-dark-green);
+    }
+
+    /* Light butter: A lighter version of butter, used for contrast */
+    .ground-light-butter {
+        --color-background:     var(--palette-light-butter);   
+        --color-text:           var(--palette-black);      
+        --color-heading:        var(--palette-dark-green);       
+        --color-link:           var(--palette-green);  
+        --color-action:         var(--palette-green);       
+        --color-on-action:      var(--palette-cream);      
+        --color-hover-action:   var(--palette-dark-green);  
+        --color-decoration:     var(--palette-olive);       
+        --color-focus:          var(--palette-green);
+    }
+
+    /* White: Used for item cards */
+    .ground-white {
+        --color-background:     var(--palette-white);   
+        --color-text:           var(--palette-green);      
+        --color-heading:        var(--palette-green);       
+        --color-link:           var(--palette-dark-green);  
+        --color-action:         var(--palette-green);       
+        --color-on-action:      var(--palette-butter);      
+        --color-hover-action:   var(--palette-dark-green);  
+        --color-decoration:     var(color-mix(in lch, var(--palette-black) 65%, --palette-white 35%));       
+        --color-focus:          var(--palette-green);
+    }
+}
+
+/* ======================================================================== **
+|| BASE LAYER: What the plain HTML is on the page as a whole before classes ||
+** ======================================================================== */
+
+@layer base {
+    body {
+        font-family: var(--font-sans);
+        font-size: var(--text-base);
+        line-height: var(--leading-body);
+        letter-spacing: var(--tracking-snug);
+        background-color: var(--color-background);
+        color: var(--color-text);
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4 {
+        font-weight: var(--weight-bold);
+        letter-spacing: var(--tracking-tight);
+        line-height: var(--leading-heading);
+        color: var(--color-heading);
+        text-wrap: balance;
+    }
+
+    h1 {
+        border-bottom: solid var(--border-line) var(--color-decoration);
+        font-size: var(--text-heading-lg);
+        line-height: var(--leading-title);
+    }
+    h2 { font-size: var(--text-heading-md); }
+    h3 { font-size: var(--text-heading-sm); }
+    h4 { font-size: var(--text-heading-xs); }
+    h5 { font-size: var(--text-heading-2xs); }
+    h6 { font-size: var(--text-base); }
+
+    /* Normal Text */
+    p {
+        max-inline-size: 65ch;
+        text-wrap: pretty;
+    }
+
+    a {
+        color: var(--color-link);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
 
         &:hover {
             text-decoration: underline;
         }
     }
 
-    & li + li::before {
-    content: '';
-    background-color: var(--olive);
-    border-radius: 0.25rem;
-    width: 0.35rem;
-    height: 0.35rem;
-    margin-right: 1rem;
-    vertical-align: middle;
-    display: inline-block;
-}
-}
+    /* Page-wide styling for focusing on items, such as search bars and forms. */
+    :focus-visible {
+        outline: 3px solid var(--color-focus);
+        outline-offset: 3px;
+    }
 
-
-
-
-#product-search {
-    flex-grow: 1;
+    /* Disables animations globally if the user has reduced motion on */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
 }
 
-.searchbar {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 1rem;
-    border: solid 2px var(--secondary-green);
-    outline: none;
-}
-.billing-address {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
+/* ========================================================================================== **
+|| LAYOUT LAYER: The sizes of the broad layout of the site, such as sections or the container ||
+** ========================================================================================== */
 
-main {
-    background-color: var(--cream);
-    padding-top: 7rem;
-}
+@layer layout {
+    .section {
+        padding-block: var(--section-pad-y);
+        padding-inline: var(--gutter);
+    }
 
+    .container {
+        inline-size: min(100%, var(--container));
+        margin-inline: auto;
+    }
 
+    .container-catalog {
+        inline-size: min(100%, var(--container-catalog));
+    }
 
-.catalog-layout {
-    display: grid;
-    grid-template-columns: 14rem 1fr;
-    align-items: start;
-}
-
-.product-filters {
-    display: flex;
-    flex-direction: column;
-    /* Header is fixed and about 7rem tall */
-    position: sticky;
-    top: 8rem;
-
-    & h2 {
+    header {
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--gap);
+        block-size: var(--header-height);
+        position: sticky;
+        padding-inline: var(--gutter);
+    }
+
+    .catalog-layout {
+        display: grid;
+        grid-template-columns: var(--filters-width) 1fr;
+        align-items: start;
+    }
+
+    .product-filters {
+        display: flex;
+        flex-direction: column;
+        /* Header is fixed and about 7rem tall */
+        position: sticky;
+        top: 8rem;
+    }
+
+    .filter-list {
+        border-radius: var(--radius-stand);
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gap);
+        align-items: start;
+        margin: var(--gap);
     }
 }
 
-.filter-dropdown {
-    background-color: var(--lighter-accent);
+/* ======================================================== **
+|| COMPONENTS LAYER: Styling for specific items on the page ||
+** ======================================================== */
 
-    & summary {
+@layer components {
+    
+    /* | -------------------------------------------------------------- | */
+    /* | General components: Components used across the site as a whole | */
+    /* | -------------------------------------------------------------- | */
+
+    /* Buttons */
+    .button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: var(--radius-stand);
+        padding: var(--button-pad-y) var(--button-pad-x);
+        font-weight: var(--weight-bold);
+        font-size: var(--text-button);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .button-primary {
+        background-color: var(--color-action);
+        border: none;
+        color: var(--color-on-action);
+        
+        &:hover {
+            background-color: var(--color-hover-action);
+        }
+    }
+
+    .button-secondary {
+        background-color: rgba(0,0,0,0);
+        border: var(--border-button) solid var(--color-action);
+        color: var(--color-action);
+
+        &:hover {
+            border-color: var(--color-hover-action);
+            background-color: var(--color-hover-action);
+            color: var(--color-on-action);
+        }
+    }
+
+    /* Searchbars */
+    .searchbar {
+        width: 100%;
         padding: 0.75rem;
-        font-weight: bold;
-        color: var(--primary-green);
-        cursor: pointer;
+        border-radius: var(--radius-pill);
+        border: solid var(--border-pill) var(--color-text);
+        color: var(--palette-black);
     }
 
-    & label {
-        display: block;
-        padding: 0.5rem 0.75rem;
-        color: var(--text-black);
+    /* | ------------------------------------------------------------------------ | */
+    /* | Section components: Components dedicated to a specific part of the site  | */
+    /* | ------------------------------------------------------------------------ | */
+
+    /* Header */
+    .logo-box {
+        inline-size: var(--logo-width);
+        flex-shrink: 0;
+
+        & img { inline-size: 100%; }
+    }
+
+    .navlist {
+        display: flex;
+        align-items: baseline;
+        gap: var(--gap);
+
+        & li + li::before {
+            content: '';
+            background-color: var(--color-decoration);
+            border-radius: var(--radius-pill);
+            width: 0.35rem;
+            height: 0.35rem;
+            margin-right: var(--gap);
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
+
+    #product-search {
+        flex-grow: 1;
+    }
+  
+    /* Forms */
+    .billing-address {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    /* Catalog Filters */
+    .filter-dropdown {
+        & summary {
+            padding: 0.75rem;
+            font-weight: bold;
+            color: var(--color-heading);
+            cursor: pointer;
+        }
+
+        & label {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--color-text);
+        }
+    }
+
+    /* Product cards */
+    .product-card {
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        height: 24rem;
+        width: auto;
+        padding: var(--padding-base);
+        border-radius: var(--radius-stand);
+    }
+
+    /* Footer */
+    footer {
+        width: 100%;
+        block-size: var(--footer-height);
+        padding-inline: var(--gutter);
     }
 }
 
-#cat1 {
-    border-radius: 0.75rem 0.75rem 0 0;
-}
 
-#cat5 {
-    border-radius: 0 0 0.75rem 0.75rem;
-}
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--padding-base);
-    padding: 0 var(--padding-base) var(--padding-base);
-    align-items: start;
-    margin: var(--padding-base);
-}
 
-.product-card {
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    height: 24rem;
-    width: auto;
-    padding: var(--padding-base);
-    border-radius: 0.75rem;
-    background-color: var(--white);
-}
 
-footer {
-    width: 100%;
-    background-color: var(--secondary-green);
-    padding: var(--padding-base);
-}
+
