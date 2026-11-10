@@ -477,7 +477,14 @@
     #product-search {
         flex-grow: 1;
     }
-
+  
+    /* Forms */
+    .billing-address {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
     /* Catalog Filters */
     .filter-dropdown {
         & summary {
