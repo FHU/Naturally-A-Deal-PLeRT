@@ -36,20 +36,24 @@
         <div class="container">
             <section class="section">
                 <h1>Sign up</h1>
-                <form class="form">
-                    <fieldset>
-                        <label for="fname">First Name</label>
-                        <input type="text" id="fname" name="fname">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" name="lname">
+                <form id="signup-form">
+                    <fieldset class="signup-name-group">
+                        <div class="text-field-pair">
+                            <label class="text-fieldlabel" for="fname">First Name</label>
+                            <input class="text-field" type="text" id="fname" name="fname" placeholder="First Name">
+                        </div>
+                        <div class="text-field-pair">
+                            <label class="text-fieldlabel" for="lname">Last Name</label>
+                            <input class="text-field" type="text" id="lname" name="lname" placeholder="Last Name">
+                        </div>
                     </fieldset>
-                    <fieldset>
-                        <label for="email">Email</label>
-                        <input type="text" id="email" name="email">
+                    <fieldset class="text-field-pair">
+                        <label class="text-fieldlabel" for="email">Email</label>
+                        <input class="text-field" type="text" id="email" name="email" placeholder="example.email@placeholder.com">
                     </fieldset>
-                    <fieldset>
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password">
+                    <fieldset class="text-field-pair">
+                        <label class="text-fieldlabel" for="password">Password</label>
+                        <input class="text-field" type="password" id="password" name="password" placeholder="Password">
                         <p>6 characters minimum</p>
                     </fieldset>
                     <fieldset>
@@ -87,22 +91,36 @@
                     </fieldset>
                     <h2>Billing Address</h2>
                     <fieldset>
-                        <label for="address">Address 1</label>
-                        <input type="text" id="address" name="address">
-                        <label for="room">Address 2 (Optional)</label>
-                        <input type="text" id="room" name="room">
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="city">
-                        <label for="state">State</label>
-                        <input type="text" id="state" name="state">
-                        <label for="zip">Zip</label>
-                        <input type="text" id="zip" name="zip">
+                        <div class="text-field-pair">
+                            <label class="text-fieldlabel" for="address">Address 1</label>
+                            <input class="text-field" type="text" id="address" name="address" placeholder="1234 Example Street">
+                        </div>
+                        <div class="text-field-pair">
+                            <label class="text-fieldlabel" for="room">Address 2 (Optional)</label>
+                            <input class="text-field" type="text" id="room" name="room" placeholder="Apartment 567">
+                        </div>
+                        <div class="signup-city-group">
+                            <div class="text-field-pair">
+                                <label class="text-fieldlabel" for="city">City</label>
+                                <input class="text-field" type="text" id="city" name="city" placeholder="City">
+                            </div>
+                            <div class="text-field-pair">
+                                <label class="text-fieldlabel" for="state">State</label>
+                                <input class="text-field" type="text" id="state" name="state" placeholder="TN">
+                            </div>
+                            <div class="text-field-pair">
+                                <label class="text-fieldlabel" for="zip">Zip</label>
+                                <input class="text-field" type="text" id="zip" name="zip" placeholder="12345">
+                            </div>
+                        </div>
                     </fieldset>
                     <fieldset>
                         <input type="checkbox" id="phone-consent" name="phone-consent">
                         <label for="phone-consent">Receive phone calls if there is a issue with your order</label>
-                        <label for="phone-number">Phone</label>
-                        <input type="text" id="phone-number" name="phone-number">
+                        <div class="text-field-pair">
+                            <label class="text-fieldlabel" for="phone-number">Phone</label>
+                            <input class="text-field" type="text" id="phone-number" name="phone-number" placeholder="(123) 456-7890">
+                        </div>
                     </fieldset>
                     <input type="submit" value="Sign up" class="button button-primary">
                 </form>

@@ -35,6 +35,10 @@
         font: inherit;
         color: inherit;
     }
+
+    :where(fieldset) {
+        border: none;
+    }
 }
 
 /* =================================================================== **
@@ -97,7 +101,7 @@
         --text-heading-xl:  clamp(2.25rem, 1.57rem + 2.73vw, 3.75rem);  /* 50px to 90px */
         --text-heading-lg:  clamp(2.25rem, 1.91rem + 1.36vw, 3rem);     /* 36px to 60px */
         --text-heading-md:  2.063rem;                                   /* 33px */
-        --text-heading-sm:  1.75;                                       /* 28px */
+        --text-heading-sm:  1.75rem;                                       /* 28px */
         --text-heading-xs:  1.438rem;                                   /* 23px */
         --text-heading-2xs: 1.188rem;                                   /* 19px */
 
@@ -120,7 +124,7 @@
         /* | ------------------------------------------------- | */
 
         /* Spacing Palette: A set of standardized spacing sizes */
-        /* Do NOT use these directly in CSS! Use the spacing roles instead. */
+        /* Try to avoid using these directly in CSS if a suitable spacing role is available. */
         --space-xs:     0.625rem;
         --space-s:      1.25rem;
         --space-m:      1.5625rem;
@@ -134,7 +138,9 @@
         --gutter:           var(--space-m);
         --section-pad-y:    var(--space-l);
         --button-pad-y:     0.75rem;
-        --button-pad-x:      1.5rem;
+        --button-pad-x:     1.5rem;
+        --field-pad-y:      0.5rem;
+        --field-pad-x:      1rem;
 
         /* | --------------------------------------------------------------------------- | */
         /* | Shape: The border radius, size, and dimensionality effects such as shadows. | */
@@ -449,6 +455,34 @@
             color: var(--color-on-action);
         }
     }
+
+    /* Forms */
+    .text-field-pair {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text-fieldlabel {
+        font-weight: var(--weight-semibold);
+        font-size: var(--text-heading-sm);
+        padding: var(--space-xs) 0;
+    }
+
+    .text-field {
+        padding: var(--field-pad-y) var(--field-pad-x);
+        border-radius: var(--radius-stand);
+        border: solid var(--border-pill) var(--color-text);
+    }
+
+    .signup-name-group, .signup-city-group {
+        display: flex;
+        gap: var(--gap);
+    }
+
+    .signup-name-group .text-field-pair { flex-grow: 1; }
+    .signup-city-group .text-field-pair:first-of-type { flex-grow: 1; }
+
+    
 
     /* Searchbars */
     .searchbar {
