@@ -100,37 +100,34 @@
                         </div>
                     </div>
 
-                    <div class="product-grid">
-                        <div class="product-card ground-white">
-                        <div class="button button-secondary">Info</div>
-                        <img src="assets/images/product-placeholder.webp" alt="Product image">
-                            <h2>Product Name</h2>
-                            <p>Product description goes here.</p>
-                            <button class="button button-primary">Add to Cart</button>
+                    <div class="catalog-products">
+                        <div id="products" class="product-grid" aria-live="polite"></div>
+                        <div id="status" role="alert" hidden>
+                            <p>Unable to load products.</p>
+                            <p class="status-detail"></p>
+                            <button class="retry button button-primary" type="button">Try again</button>
                         </div>
+                    </div>
 
-                        <div class="product-card ground-white">
-                            <div class="button button-secondary">Info</div>
-                            <img src="assets/images/product-placeholder.webp" alt="Product image">
-                            <h2>Product Name</h2>
-                            <p>Product description goes here.</p>
-                            <button class="button button-primary">Add to Cart</button>
-                        </div>
-
-                        <div class="product-card ground-white">
-                            <div class="button button-secondary">Info</div>
-                            <img src="assets/images/product-placeholder.webp" alt="Product image">
-                            <h2>Product Name</h2>
-                            <p>Product description goes here.</p>
-                            <button class="button button-primary">Add to Cart</button>
-                        </div>
-
-                        
-
-                    </div> <!-- Close product-grid -->
+                    <template id="card-template">
+                        <article class="product-card ground-white">
+                            <button class="info button button-secondary" type="button">Info</button>
+                            <div class="media"><img alt="" loading="lazy"></div>
+                            <h3 class="name"></h3>
+                            <h4 class="amount"></h4>
+                            <p class="product-info">
+                                <span class="storage"></span>
+                                <span class="pack"></span>
+                                <span class="unit"></span>
+                                <span class="date"></span>
+                            </p>
+                            <button class="add button button-primary" type="button">Add to Cart</button>
+                        </article>
+                    </template>
                 </div> <!-- Close catalog-layout -->
             </section>
         </div> <!-- Close container -->
     </main>
+    <script src="NAD.js"></script>
 </body>
 </html>
