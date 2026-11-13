@@ -33,17 +33,16 @@
     </header>
     
     <main class="ground-cream">
-    <div class="container">
-        <section class="section">
-            <h1>Log in</h1>
-            <form class="form">
-                <fieldset>
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email">
+        <div class="container">
+            <form id="login-form">
+                <h1>Log in</h1>
+                <fieldset class="text-field-pair">
+                    <label class="text-fieldlabel" for="email">Email</label>
+                    <input class="text-field" type="text" id="email" name="email" placeholder="example.email@placeholder.com">
                 </fieldset>
-                <fieldset>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
+                <fieldset class="text-field-pair">
+                    <label class="text-fieldlabel" for="password">Password</label>
+                    <input class="text-field" type="password" id="password" name="password" placeholder="Password">
                 </fieldset>
                 <div class="check">
                     <input type="checkbox" id="remember" name="remember">
