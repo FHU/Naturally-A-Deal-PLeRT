@@ -357,10 +357,14 @@
         align-items: center;
         justify-content: space-between;
         gap: var(--gap);
-        block-size: var(--header-height);
+        min-block-size: var(--header-height);
         position: sticky;
+        top: 0;
+        z-index: 10;
         padding-inline: var(--gutter);
     }
+
+    header nav { flex-shrink:0; }
 
     .catalog-layout {
         display: grid;
@@ -479,6 +483,48 @@
     }
   
     /* Forms */
+    .form {
+        display: grid;
+        gap: var(--gap);
+        max-inline-size: 32rem;
+        margin-block: var(--gap);
+    }
+
+    .form fieldset {
+        display: grid;
+        gap: 0.4rem;
+        border: none;
+        min-inline-size: 0;
+
+    }
+
+    .form label { font-weight: var(--weight-semibold); }
+
+    .form p {
+        font-size: var(--text-small);
+        max-inline-size: none;
+    }
+
+    .form input:not([type="checkbox"], [type="submit"]),
+    .form select {
+        inline-size: 100%;
+        padding: 0.75rem;
+        border: var(--border-pill) solid var(--color-text);
+        border-radius: var(--radius-stand);
+        background-color: var(--palette-white);
+        color: var(--palette-black);
+    }
+
+    .form .check {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        & label { font-weight: var(--weight-regular); }
+    }
+
+    .form input[type="submit"] { justify-self: start; }
+    
     .billing-address {
         display: grid;
         grid-template-columns: 1fr 1fr;
