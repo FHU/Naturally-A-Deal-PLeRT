@@ -531,47 +531,63 @@
     }
   
     /* Forms */
-    .form {
-        display: grid;
-        gap: var(--gap);
-        max-inline-size: 32rem;
-        margin-block: var(--gap);
-    }
+    :where(#login-form, #signup-form) {
+    display: grid;
+    gap: var(--gap);
+    max-inline-size: 32rem;
+    margin-block: var(--gap);
+}
 
-    .form fieldset {
-        display: grid;
-        gap: 0.4rem;
-        border: none;
-        min-inline-size: 0;
+:where(#login-form, #signup-form) fieldset {
+    display: grid;
+    gap: var(--gap);
+    border: none;
+    min-inline-size: 0;
+}
 
-    }
+:where(#login-form, #signup-form) input[type="submit"] {
+    justify-self: start;
+}
 
-    .form label { font-weight: var(--weight-semibold); }
+.text-field-pair {
+    display: grid;
+    gap: 0.4rem;
+}
 
-    .form p {
-        font-size: var(--text-small);
-        max-inline-size: none;
-    }
+.text-fieldlabel,
+#signup-form label[for="coop-group"] {
+    font-weight: var(--weight-semibold);
+}
 
-    .form input:not([type="checkbox"], [type="submit"]),
-    .form select {
-        inline-size: 100%;
-        padding: 0.75rem;
-        border: var(--border-pill) solid var(--color-text);
-        border-radius: var(--radius-stand);
-        background-color: var(--palette-white);
-        color: var(--palette-black);
-    }
+.text-field,
+#signup-form select {
+    inline-size: 100%;
+    padding: 0.75rem;
+    border: var(--border-pill) solid var(--color-text);
+    border-radius: var(--radius-stand);
+    background-color: var(--palette-white);
+    color: var(--palette-black);
+}
 
-    .form .check {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+#signup-form p {
+    font-size: var(--text-small);
+}
 
-        & label { font-weight: var(--weight-regular); }
-    }
+.check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-    .form input[type="submit"] { justify-self: start; }
+.signup-name-group {
+    grid-template-columns: 1fr 1fr;
+}
+
+.signup-city-group {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--gap);
+}
     
     .billing-address {
         display: grid;
