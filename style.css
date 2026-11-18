@@ -604,6 +604,20 @@
     align-items: center;
     gap: 0.5rem;
 }
+.phone-consent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.phone-consent label {
+    font-size: 1.05rem;
+}
+#phone-consent {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    flex-shrink: 0;
+}
 
 .signup-name-group {
     grid-template-columns: 1fr 1fr;
