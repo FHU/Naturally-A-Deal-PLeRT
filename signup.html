@@ -32,34 +32,49 @@
         <a href="login.html"><button class="button button-primary">Login or sign up</button></a>
     </header>
 
-    <main class="ground-cream">
-        <div class="container">
+    <main class="ground-deep">
+        <div class="ground-cream container form-container">
             <section class="section">
                 <h1>Sign up</h1>
+            <!--step 1 -->
                 <form id="signup-form">
-                    <fieldset class="signup-name-group">
-                        <div class="text-field-pair">
-                            <label class="text-fieldlabel" for="fname">First Name</label>
-                            <input class="text-field" type="text" id="fname" name="fname" placeholder="First Name">
+                    
+                    <div class="form-step active">
+                        <fieldset class="text-field-pair">
+                            <label class="text-fieldlabel" for="first-name">First Name</label>
+                            <input class="text-field" type="text" id="first-name" name="first-name" placeholder="First Name">
+                        </fieldset>
+                        
+                        <fieldset class="text-field-pair">
+                            <label class="text-fieldlabel" for="last-name">Last Name</label>
+                            <input class="text-field" type="text" id="last-name" name="last-name" placeholder="Last Name">
+                        </fieldset>
+                    
+
+                        <fieldset class="text-field-pair">
+                            <label class="text-fieldlabel" for="email">Email</label>
+                            <input class="text-field" type="email" id="email" name="email" placeholder="example.email@placeholder.com">
+                        </fieldset>
+
+                        <fieldset class="text-field-pair">
+                            <label class="text-fieldlabel" for="password">Password</label>
+                            <input class="text-field" type="password" id="password" name="password" placeholder="Password">
+                            <p>6 characters minimum</p>
+                        </fieldset>
+
+                        <div class="form-navigation">
+                            
+                            <button type="button" class="button button-primary next-button">Next</button>
                         </div>
-                        <div class="text-field-pair">
-                            <label class="text-fieldlabel" for="lname">Last Name</label>
-                            <input class="text-field" type="text" id="lname" name="lname" placeholder="Last Name">
-                        </div>
-                    </fieldset>
+                </div>
+
+            <!--step 2 -->
+                <div class="form-step">
+                    <h2>Co-op Group</h2>
                     <fieldset class="text-field-pair">
-                        <label class="text-fieldlabel" for="email">Email</label>
-                        <input class="text-field" type="text" id="email" name="email" placeholder="example.email@placeholder.com">
-                    </fieldset>
-                    <fieldset class="text-field-pair">
-                        <label class="text-fieldlabel" for="password">Password</label>
-                        <input class="text-field" type="password" id="password" name="password" placeholder="Password">
-                        <p>6 characters minimum</p>
-                    </fieldset>
-                    <fieldset>
-                        <label for="coop-group">Choose a Co-op Group</label>
+                        <label class="text-fieldlabel" for="coop-group">Choose a Co-op Group</label>
                         <p>A co-op group is the area you will pick up your items in.</p>
-                        <select name="coop-group" id="coop-group">
+                        <select  id="coop-group" name="coop-group">
                             <optgroup label="Alabama">
                                 <option value="al-placeholder">AL-Placeholder</option>
                             </optgroup>
@@ -89,7 +104,16 @@
                             </optgroup>
                         </select>
                     </fieldset>
+                    <div class="form-navigation">
+                        <button type="button" class="button button-secondary back-button">Back</button>
+                            <button type="button" class="button button-primary next-button">Next</button>
+                    </div>
+                </div>
+
+                <!--step 3 -->
+                <div class="form-step">
                     <h2>Billing Address</h2>
+
                     <fieldset>
                         <div class="text-field-pair">
                             <label class="text-fieldlabel" for="address">Address 1</label>
@@ -112,6 +136,8 @@
                                 <label class="text-fieldlabel" for="zip">Zip</label>
                                 <input class="text-field" type="text" id="zip" name="zip" placeholder="12345">
                             </div>
+                            
+                            
                         </div>
                     </fieldset>
                     <fieldset>
@@ -122,10 +148,16 @@
                             <input class="text-field" type="text" id="phone-number" name="phone-number" placeholder="(123) 456-7890">
                         </div>
                     </fieldset>
-                    <input type="submit" value="Sign up" class="button button-primary">
+                    <div class="form-navigation">
+                        <button type="button" class="button button-secondary back-button">Back</button>
+                        <input type="submit" value="Sign up" class="button button-primary">
+                    </div>
+                </div>
                 </form>
             </section>
         </div>
     </main>
+    
+    <script src="NAD.js"></script>
 </body>
 </html>

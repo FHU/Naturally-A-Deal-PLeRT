@@ -347,11 +347,31 @@
         padding-block: var(--section-pad-y);
         padding-inline: var(--gutter);
     }
+    .form-container {
+        max-inline-size: 40rem;
+        padding-inline: 1rem;
+    }
+    .form-container h1 {
+        text-align: center;
+    }
+    .form-step {
+        display: none;
+    }
+    .form-step.active {
+        display: grid;
+        gap: var(--gap);
+    }
+    .form-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: var(--gap);
+        align-items: center;
+    }
+  
 
     .container {
         inline-size: min(100%, var(--container));
-        margin-inline: auto;
-    }
+        margin-inline: auto;    }
 
     .container-catalog {
         inline-size: min(100%, var(--container-catalog));
@@ -536,6 +556,7 @@
     gap: var(--gap);
     max-inline-size: 32rem;
     margin-block: var(--gap);
+    margin-inline: auto;
 }
 
 :where(#login-form, #signup-form) fieldset {
@@ -545,9 +566,7 @@
     min-inline-size: 0;
 }
 
-:where(#login-form, #signup-form) input[type="submit"] {
-    justify-self: start;
-}
+
 
 .text-field-pair {
     display: grid;
@@ -571,6 +590,12 @@
 
 #signup-form p {
     font-size: var(--text-small);
+}
+
+#login-form + .button-secondary {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
 }
 
 .check {
