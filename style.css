@@ -164,6 +164,8 @@
         --container:            71.25rem;
         /* --container-wide:    80rem;     */
         --container-catalog:    100rem;
+        --container-small:      55rem;
+        --container-form:       32rem;
         --header-height:        5.625rem; 
         --footer-height:        5.625rem;
         --logo-width:           11.875rem;
@@ -347,13 +349,6 @@
         padding-block: var(--section-pad-y);
         padding-inline: var(--gutter);
     }
-    .form-container {
-        max-inline-size: 40rem;
-        padding-inline: 1rem;
-    }
-    .form-container h1 {
-        text-align: center;
-    }
     .form-step {
         display: none;
     }
@@ -361,20 +356,21 @@
         display: grid;
         gap: var(--gap);
     }
-    .form-navigation {
-        display: flex;
-        justify-content: space-between;
-        margin-top: var(--gap);
-        align-items: center;
-    }
   
 
     .container {
         inline-size: min(100%, var(--container));
-        margin-inline: auto;    }
-
+        margin-inline: auto;
+        min-height: 100%;
+    }
     .container-catalog {
         inline-size: min(100%, var(--container-catalog));
+    }
+    .container-small {
+        inline-size: min(100%, var(--container-small));
+    }
+    .container-form {
+        padding-inline: var(--space-3xl);
     }
 
     header {
@@ -553,81 +549,84 @@
   
     /* Forms */
     :where(#login-form, #signup-form) {
-    display: grid;
-    gap: var(--gap);
-    max-inline-size: 32rem;
-    margin-block: var(--gap);
-    margin-inline: auto;
-}
+        display: grid;
+        gap: var(--gap);
+        /* max-inline-size: 32rem; */
+        margin-block: var(--gap);
+        margin-inline: auto;
+    }
 
-:where(#login-form, #signup-form) fieldset {
-    display: grid;
-    gap: var(--gap);
-    border: none;
-    min-inline-size: 0;
-}
+    :where(#login-form, #signup-form) fieldset {
+        display: grid;
+        gap: var(--gap);
+        border: none;
+        min-inline-size: 0;
+    }
 
+    .form-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: var(--gap);
+        align-items: center;
+    }
 
+    .text-field-pair {
+        display: grid;
+        gap: 0.4rem;
+    }
 
-.text-field-pair {
-    display: grid;
-    gap: 0.4rem;
-}
+    .text-fieldlabel, #signup-form label[for="coop-group"] {
+        font-weight: var(--weight-semibold);
+    }
 
-.text-fieldlabel,
-#signup-form label[for="coop-group"] {
-    font-weight: var(--weight-semibold);
-}
+    .text-field, #signup-form select {
+        inline-size: 100%;
+        padding: 0.75rem;
+        border: var(--border-pill) solid var(--color-text);
+        border-radius: var(--radius-stand);
+        background-color: var(--palette-white);
+        color: var(--palette-black);
+    }
 
-.text-field,
-#signup-form select {
-    inline-size: 100%;
-    padding: 0.75rem;
-    border: var(--border-pill) solid var(--color-text);
-    border-radius: var(--radius-stand);
-    background-color: var(--palette-white);
-    color: var(--palette-black);
-}
+    #signup-form p {
+        font-size: var(--text-small);
+    }
 
-#signup-form p {
-    font-size: var(--text-small);
-}
+    #login-form + .button-secondary {
+        display: block;
+        width: fit-content;
+        margin-inline: auto;
+    }
 
-#login-form + .button-secondary {
-    display: block;
-    width: fit-content;
-    margin-inline: auto;
-}
+    .check {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .phone-consent {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .phone-consent label {
+        font-size: 1.05rem;
+    }
+    #phone-consent {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin: 0;
+        flex-shrink: 0;
+    }
 
-.check {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.phone-consent {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.phone-consent label {
-    font-size: 1.05rem;
-}
-#phone-consent {
-    width: 1.25rem;
-    height: 1.25rem;
-    margin: 0;
-    flex-shrink: 0;
-}
+    .signup-name-group {
+        grid-template-columns: 1fr 1fr;
+    }
 
-.signup-name-group {
-    grid-template-columns: 1fr 1fr;
-}
-
-.signup-city-group {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: var(--gap);
-}
+    .signup-city-group {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: var(--gap);
+    }
     
     .billing-address {
         display: grid;
