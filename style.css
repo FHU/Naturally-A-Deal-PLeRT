@@ -623,29 +623,25 @@
         padding: var(--gutter);
         border-radius: var(--radius-stand);
         overflow-wrap: anywhere;
-    }
 
-    .product-card .media {
-        width: 100%;
-    }
+        & .media {
+            width: 100%;
+        }
 
-    .product-card .name {
-        font-size: var(--text-heading-2xs);
-        line-height: var(--leading-loose);
-    }
+        & .name {
+            font-size: var(--text-heading-2xs);
+            line-height: var(--leading-loose);
+        }
 
-    .product-card .product-info > span:not([hidden]) {
-        display: block;
-        padding-left: 1em;
-        text-indent: -1em;
-    }
+        & .product-info > span:not([hidden]) {
+            display: block;
+            padding-left: 1em;
+            text-indent: -1em;
+        }
 
-    .product-card .product-info > span::before {
-        content: "• ";
-    }
-
-    .product-card .add {
-        margin-top: auto;
+        & .add {
+            margin-top: auto;
+        }
     }
 
     /* Footer */
