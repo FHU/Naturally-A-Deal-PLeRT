@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Naturally a Deal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+
+<body class="cart-page">
+    <header class="ground-green">
+        <a class="logo-box" href="catalog.html"><img src="assets/images/Naturally-a-Deal-logo-white.webp" alt="Naturally a Deal home"></a>
+        <nav aria-label="Main navigation">
+            <ul class="navlist">
+                <li><a href="catalog.html">Products</a></li>
+                <li><a href="https://naturallyadeal.com/about-us/">About us</a></li>
+                <li><a href="https://naturallyadeal.com/products-vendors/">Vendors</a></li>
+                <li><a href="https://naturallyadeal.com/contact/">Contact us</a></li>
+                <li><a href="https://naturallyadeal.com/faq/">FAQ</a></li>
+            </ul>
+        </nav>
+        <form id="product-search" action="catalog.html">
+            <input type="search" name="q" placeholder="Search products" class="searchbar" aria-label="Search products">
+        </form>
+        <a class="button button-primary" href="login.html">Login or sign up</a>
+    </header>
+
+    <main class="ground-cream">
+        <div class="container section">
+            <h1>Your Cart</h1>
+            <p class="cart-intro">Review your items before checking out.</p>
+
+            <div class="cart-layout">
+                <section class="cart-items" aria-label="Cart items" aria-live="polite">
+                    <p class="cart-loading">Loading your cart…</p>
+                </section>
+
+                <aside class="cart-summary ground-light-butter" aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Order summary</h2>
+                    <dl>
+                        <div class="summary-row">
+                            <dt>Subtotal</dt>
+                            <dd id="cart-subtotal">$0.00</dd>
+                        </div>
+                        <div class="summary-row">
+                            <dt>Shipping &amp; tax</dt>
+                            <dd>Calculated at checkout</dd>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <dt>Total</dt>
+                            <dd id="cart-total">$0.00</dd>
+                        </div>
+                    </dl>
+                    <button class="button button-primary checkout-button" type="button">Proceed to Checkout</button>
+                    <a class="continue-shopping" href="catalog.html">Continue shopping</a>
+                </aside>
+            </div>
+
+            <div id="cart-status" class="cart-status" role="alert" hidden>
+                <p>Unable to load your cart.</p>
+                <p class="status-detail"></p>
+                <button class="retry button button-primary" type="button">Try again</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer ground-green">
+        <div class="footer-content">
+            <a class="footer-brand" href="catalog.html">
+                <img src="assets/images/Naturally-a-Deal-logo-white.webp" alt="Naturally a Deal">
+                <span>Good food. Naturally a deal.</span>
+            </a>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="catalog.html">Products</a>
+                <a href="cart.html">Your cart</a>
+                <a href="https://naturallyadeal.com/about-us/">About us</a>
+                <a href="https://naturallyadeal.com/contact/">Contact us</a>
+                <a href="https://naturallyadeal.com/faq/">FAQ</a>
+            </nav>
+            <p class="footer-copyright">&copy; Naturally a Deal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <template id="cart-item-template">
+        <article class="cart-item ground-white">
+            <img class="cart-item-image" alt="" loading="lazy">
+            <div class="cart-item-details">
+                <p class="cart-item-category"></p>
+                <h2 class="cart-item-name"></h2>
+                <p class="cart-item-package"></p>
+                <p class="cart-item-price"></p>
+                <button class="remove-item" type="button">Remove</button>
+            </div>
+            <label class="quantity-control">
+                <span>Quantity</span>
+                <input class="quantity-input" type="number" min="1" step="1" value="1" inputmode="numeric">
+            </label>
+            <p class="cart-item-total"></p>
+        </article>
+    </template>
+
+    <script src="cart.js"></script>
+</body>
+</html>
