@@ -6,6 +6,25 @@ const API_URL = 'NAD.json';
 const productsEl = document.querySelector('#products');
 const statusEl  = document.querySelector('#status');
 const cardTemplate   = document.querySelector('#card-template');
+const filterList = document.querySelector('.filter-list');
+const productSearch = document.querySelector('#product-search');
+const noResultsEl = document.querySelector('#no-results');
+
+const NON_FOOD_CATEGORIES = new Set([
+  'Clearance - Other',
+  'Essential Oils',
+  'Garden Seeds',
+  'Gardening Supplies',
+  'General Merchandise',
+  'Health & Beauty Aids',
+  'Household   Paper Supplies',
+  'Household   Soaps & Detergents',
+  'Kitchen Items',
+  'Livestock Feed',
+  'Nutritional Supplements',
+  'Pet Food & Supplies',
+  'Soap & Skincare',
+]);
 
 /* ---------- Fetching ---------- */
 async function fetchProducts() {
@@ -38,6 +57,47 @@ function normalize(raw) {
   };
 }
 
+function filterCategoryName(category) {
+  return category.replace(/^Featured Products\s*\|\s*/i, '').trim();
+}
+
+function categoryGroup(category) {
+  const name = filterCategoryName(category);
+  if (name.startsWith('Books')) return 'books';
+  return NON_FOOD_CATEGORIES.has(name) ? 'non-food' : 'food';
+}
+
+function buildCategoryFilters(products) {
+  const categoriesByGroup = new Map([
+    ['food', new Set()],
+    ['non-food', new Set()],
+    ['books', new Set()],
+  ]);
+
+  for (const product of products) {
+    const category = filterCategoryName(product.categories || '');
+    const group = categoryGroup(category);
+    if (category) categoriesByGroup.get(group).add(category);
+  }
+
+  for (const [group, categories] of categoriesByGroup) {
+    const options = filterList.querySelector(`[data-filter-options="${group}"]`);
+    const sortedCategories = [...categories].sort((a, b) => a.localeCompare(b));
+    options.replaceChildren(...sortedCategories.map((category, index) => {
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.id = `filter-${group}-${index}`;
+      input.dataset.filterGroup = group;
+      input.dataset.filterCategory = category;
+      input.value = category;
+      label.htmlFor = input.id;
+      label.append(input, document.createTextNode(` ${category}`));
+      return label;
+    }));
+  }
+}
+
 /* ---------- Building cards ---------- */
 // innerHTML is used here (instead of textContent) so the cents can be wrapped
 // in a <sup> tag. That's safe because the string is built from a number we
@@ -59,6 +119,9 @@ function dateText(product) {
 function makeCard(product) {
   const card = cardTemplate.content.firstElementChild.cloneNode(true);
   card.dataset.productId = product.product_id;
+  card.dataset.categoryGroup = categoryGroup(product.categories || '');
+  card.dataset.categoryName = filterCategoryName(product.categories || '');
+  card.dataset.price = product.price;
 
   const media = card.querySelector('.media');
   const img = card.querySelector('img');
@@ -95,6 +158,46 @@ function makeCard(product) {
   return card;
 }
 
+function priceMatches(price, range) {
+  const [minimum, maximum] = range.split('-').map(Number);
+  if (range.endsWith('+')) return price >= Number.parseFloat(range);
+  return price >= minimum && price < maximum;
+}
+
+function updateVisibleProducts() {
+  const categoryFilters = [...filterList.querySelectorAll('[data-filter-category]:checked')];
+  const priceFilters = [...filterList.querySelectorAll('input[name="price"]:checked')].map((input) => input.value);
+  const query = productSearch.value.trim().toLocaleLowerCase();
+  let visibleCount = 0;
+
+  for (const card of productsEl.querySelectorAll('.product-card')) {
+    const categoryMatch = !categoryFilters.length || categoryFilters.some((input) =>
+      input.dataset.filterGroup === card.dataset.categoryGroup
+      && input.dataset.filterCategory === card.dataset.categoryName
+    );
+    const price = Number(card.dataset.price);
+    const priceMatch = !priceFilters.length || priceFilters.some((range) => priceMatches(price, range));
+    const searchMatch = !query || card.querySelector('.name').textContent.toLocaleLowerCase().includes(query);
+    card.hidden = !(categoryMatch && priceMatch && searchMatch);
+    if (!card.hidden) visibleCount += 1;
+  }
+
+  noResultsEl.hidden = visibleCount > 0;
+}
+
+filterList.addEventListener('change', updateVisibleProducts);
+filterList.addEventListener('input', (event) => {
+  if (event.target.matches('.filter-search')) {
+    const query = event.target.value.trim().toLocaleLowerCase();
+    const options = event.target.parentElement.querySelector('.filter-options');
+    for (const label of options.querySelectorAll('label')) {
+      label.hidden = !label.textContent.toLocaleLowerCase().includes(query);
+    }
+  }
+});
+productSearch.addEventListener('input', updateVisibleProducts);
+document.querySelector('#product-search-form').addEventListener('submit', (event) => event.preventDefault());
+
 /* ---------- Loading and error states ---------- */
 function showLoading() {
   statusEl.hidden = true;
@@ -116,7 +219,9 @@ async function loadProducts() {
   try {
     const products = await fetchProducts();
     if (!products.length) throw new Error('No products were found.');
+    buildCategoryFilters(products);
     productsEl.replaceChildren(...products.map(makeCard));
+    updateVisibleProducts();
   } catch (error) {
     console.error(error);   // full details for the developer in DevTools
     showError(error);       // a readable message for the visitor

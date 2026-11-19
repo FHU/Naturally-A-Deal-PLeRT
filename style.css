@@ -612,6 +612,16 @@
         }
     }
 
+    .filter-options {
+        max-height: 16rem;
+        overflow-y: auto;
+    }
+
+    .filter-dropdown label[hidden],
+    .product-card[hidden] {
+        display: none;
+    }
+
     /* Product cards */
     .product-card {
         display: flex;

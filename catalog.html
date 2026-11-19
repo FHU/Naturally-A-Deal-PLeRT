@@ -26,8 +26,8 @@
                 <li><a href="https://naturallyadeal.com/faq/">FAQ</a></li>
             </ul>
         </nav>
-        <form id="product-search">
-            <input type="search" placeholder="Search products" class="searchbar">
+        <form id="product-search-form">
+            <input id="product-search" type="search" placeholder="Search products" class="searchbar">
         </form>
         <a href="login.html"><button class="button button-primary">Login or sign up</button></a>
     </header>
@@ -42,59 +42,37 @@
                     <div class="product-filters">
                         <h2>Filters</h2>
                         <div class="filter-list ground-light-butter">
-                            <details class="filter-dropdown">
-                                <summary>Category 1</summary>
+                            <details class="filter-dropdown" open>
+                                <summary>Food</summary>
                                 <div class="ground-butter">
-                                    <form id="product-search">
-                                        <input type="search" placeholder="Search filters" class="searchbar">
-                                    </form>
-                                    <label for="cat1-1"><input type="checkbox" id="cat1-1" name="cat1" value="Subcategory 1A"> Subcategory 1A</label>
-                                    <label for="cat1-2"><input type="checkbox" id="cat1-2" name="cat1" value="Subcategory 1B"> Subcategory 1B</label>
-                                    <label for="cat1-3"><input type="checkbox" id="cat1-3" name="cat1" value="Subcategory 1C"> Subcategory 1C</label>
+                                    <input type="search" placeholder="Search food" class="searchbar filter-search" aria-label="Search food subcategories">
+                                    <div class="filter-options" data-filter-options="food"></div>
                                 </div>
                             </details>
                             <details class="filter-dropdown">
-                                <summary>Category 2</summary>
+                                <summary>Non-food</summary>
                                 <div class="ground-butter">
-                                    <form id="product-search">
-                                        <input type="search" placeholder="Search filters" class="searchbar">
-                                    </form>
-                                    <label for="cat2-1"><input type="checkbox" id="cat2-1" name="cat2" value="Subcategory 2A"> Subcategory 2A</label>
-                                    <label for="cat2-2"><input type="checkbox" id="cat2-2" name="cat2" value="Subcategory 2B"> Subcategory 2B</label>
-                                    <label for="cat2-3"><input type="checkbox" id="cat2-3" name="cat2" value="Subcategory 2C"> Subcategory 2C</label>
+                                    <input type="search" placeholder="Search non-food" class="searchbar filter-search" aria-label="Search non-food subcategories">
+                                    <div class="filter-options" data-filter-options="non-food"></div>
                                 </div>
                             </details>
                             <details class="filter-dropdown">
-                                <summary>Category 3</summary>
+                                <summary>Books</summary>
                                 <div class="ground-butter">
-                                    <form id="product-search">
-                                        <input type="search" placeholder="Search filters" class="searchbar">
-                                    </form>
-                                    <label for="cat3-1"><input type="checkbox" id="cat3-1" name="cat3" value="Subcategory 3A"> Subcategory 3A</label>
-                                    <label for="cat3-2"><input type="checkbox" id="cat3-2" name="cat3" value="Subcategory 3B"> Subcategory 3B</label>
-                                    <label for="cat3-3"><input type="checkbox" id="cat3-3" name="cat3" value="Subcategory 3C"> Subcategory 3C</label>
+                                    <input type="search" placeholder="Search books" class="searchbar filter-search" aria-label="Search book subcategories">
+                                    <div class="filter-options" data-filter-options="books"></div>
                                 </div>
                             </details>
                             <details class="filter-dropdown">
-                                <summary>Category 4</summary>
+                                <summary>Price</summary>
                                 <div class="ground-butter">
-                                    <form id="product-search">
-                                        <input type="search" placeholder="Search filters" class="searchbar">
-                                    </form>
-                                    <label for="cat4-1"><input type="checkbox" id="cat4-1" name="cat4" value="Subcategory 4A"> Subcategory 4A</label>
-                                    <label for="cat4-2"><input type="checkbox" id="cat4-2" name="cat4" value="Subcategory 4B"> Subcategory 4B</label>
-                                    <label for="cat4-3"><input type="checkbox" id="cat4-3" name="cat4" value="Subcategory 4C"> Subcategory 4C</label>
-                                </div>
-                            </details>
-                            <details class="filter-dropdown">
-                                <summary>Category 5</summary>
-                                <div class="ground-butter">
-                                    <form id="product-search">
-                                        <input type="search" placeholder="Search filters" class="searchbar">
-                                    </form>
-                                    <label for="cat5-1"><input type="checkbox" id="cat5-1" name="cat5" value="Subcategory 5A"> Subcategory 5A</label>
-                                    <label for="cat5-2"><input type="checkbox" id="cat5-2" name="cat5" value="Subcategory 5B"> Subcategory 5B</label>
-                                    <label for="cat5-3"><input type="checkbox" id="cat5-3" name="cat5" value="Subcategory 5C"> Subcategory 5C</label>
+                                    <div class="filter-options">
+                                        <label><input type="checkbox" name="price" value="0-10"> Under $10</label>
+                                        <label><input type="checkbox" name="price" value="10-25"> $10 to $24.99</label>
+                                        <label><input type="checkbox" name="price" value="25-50"> $25 to $49.99</label>
+                                        <label><input type="checkbox" name="price" value="50-100"> $50 to $99.99</label>
+                                        <label><input type="checkbox" name="price" value="100+"> $100 and up</label>
+                                    </div>
                                 </div>
                             </details>
                         </div>
@@ -102,6 +80,7 @@
 
                     <div class="catalog-products">
                         <div id="products" class="product-grid" aria-live="polite"></div>
+                        <p id="no-results" hidden>No products match those filters.</p>
                         <div id="status" role="alert" hidden>
                             <p>Unable to load products.</p>
                             <p class="status-detail"></p>
