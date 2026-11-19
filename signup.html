@@ -32,64 +32,150 @@
         <a href="login.html"><button class="button button-primary">Login or sign up</button></a>
     </header>
 
-    <main class="ground-cream">
-        <div class="container">
+    <main class="ground-deep">
+        <div class="ground-cream container container-small container-form">
             <section class="section">
                 <h1>Sign up</h1>
+            <!--step 1 -->
                 <form id="signup-form">
-                    <fieldset class="signup-name-group">
-                        <div class="text-field-pair">
-                            <label class="text-fieldlabel" for="fname">First Name</label>
-                            <input class="text-field" type="text" id="fname" name="fname" placeholder="First Name">
+                    
+                    <div class="form-step active">
+                        <fieldset class="text-field-pair">
+                            <label class="text-fieldlabel" for="first-name">First Name</label>
+                            <input class="text-field" type="text" id="first-name" name="first-name" placeholder="First Name">
+                        </fieldset>
+                        
+                        <fieldset class="text-field-pair">
+                            <label class="text-fieldlabel" for="last-name">Last Name</label>
+                            <input class="text-field" type="text" id="last-name" name="last-name" placeholder="Last Name">
+                        </fieldset>
+                    
+
+                        <fieldset class="text-field-pair">
+                            <label class="text-fieldlabel" for="email">Email</label>
+                            <input class="text-field" type="email" id="email" name="email" placeholder="example.email@placeholder.com">
+                        </fieldset>
+
+                        <fieldset class="text-field-pair">
+                            <label class="text-fieldlabel" for="password">Password</label>
+                            <input class="text-field" type="password" id="password" name="password" placeholder="Password">
+                            <p>6 characters minimum</p>
+                        </fieldset>
+
+                        <div class="form-navigation">
+                            
+                            <button type="button" class="button button-primary next-button">Next</button>
                         </div>
-                        <div class="text-field-pair">
-                            <label class="text-fieldlabel" for="lname">Last Name</label>
-                            <input class="text-field" type="text" id="lname" name="lname" placeholder="Last Name">
-                        </div>
-                    </fieldset>
+                </div>
+
+            <!--step 2 -->
+                <div class="form-step">
+                    <h2>Co-op Group</h2>
                     <fieldset class="text-field-pair">
-                        <label class="text-fieldlabel" for="email">Email</label>
-                        <input class="text-field" type="text" id="email" name="email" placeholder="example.email@placeholder.com">
-                    </fieldset>
-                    <fieldset class="text-field-pair">
-                        <label class="text-fieldlabel" for="password">Password</label>
-                        <input class="text-field" type="password" id="password" name="password" placeholder="Password">
-                        <p>6 characters minimum</p>
-                    </fieldset>
-                    <fieldset>
-                        <label for="coop-group">Choose a Co-op Group</label>
+                        <label class="text-fieldlabel" for="coop-group">Choose a Co-op Group</label>
                         <p>A co-op group is the area you will pick up your items in.</p>
-                        <select name="coop-group" id="coop-group">
-                            <optgroup label="Alabama">
-                                <option value="al-placeholder">AL-Placeholder</option>
-                            </optgroup>
-                            <optgroup label="Georgia">
-                                <option value="ga-placeholder">GA-Placeholder</option>
-                            </optgroup>
-                            <optgroup label="Michigan">
+                        <select class="select required" name="user[user_group_id]" id="user_user_group_id">
+                            <option value="">Choose a Co-op Group</option>
+                                <optgroup label="Alabama">
+                                    <option value="58">(A-02) AL - Dothan</option>
+                                    <option value="65">(A-03) AL - Opp</option>
+                                    <option value="23">(A-04) AL - Prattville</option>
+                                    <option value="9">(A-05) AL - Sterrett</option>
+                                    <option value="83">(A-06) AL - Tuscaloosa </option>
+                                    <option value="8">(A-07) AL - Madison</option>
+                                </optgroup>
+                                <optgroup label="Georgia">
+                                    <option value="116">(G-01) GA - Perry</option>
+                                </optgroup>
+                                <optgroup label="Michigan">
+                                    <option value="13">(M-01) MI - Muskegon</option>
+                                </optgroup>
+                                <optgroup label="Mississippi">
+                                    <option value="113">(T-13) MS - Corinth</option>
+                                    <option value="67">(T-14) MS - Hernando</option>
+                                </optgroup>
+                                <optgroup label="Nebraska">
+                                    <option value="64">(N-01) NE - Omaha</option>
+                                </optgroup>
 
-                            </optgroup>
-                            <optgroup label="Mississippi">
+                                <optgroup label="North Carolina">
+                                    <option value="12">(B-01) NC - Albermarle</option>
+                                    <option value="14">(B-02) NC - Salisbury</option>
+                                    <option value="15">(B-03) NC - Youngsville</option>
+                                    <option value="17">(B-04) NC - Wake Forest</option>
+                                    <option value="19">(B-05) NC - Apex</option>
+                                    <option value="24">(B-06) NC - Fuquay-Varina</option>
+                                    <option value="26">(B-07) NC - Clayton</option>
+                                    <option value="28">(B-08) NC - Beulaville</option>
+                                    <option value="30">(B-09) NC - Washington</option>
+                                    <option value="32">(B-10) NC - Pantego</option>
+                                    <option value="86">(C-11) NC - Deep Gap</option>
+                                </optgroup>
+                                <optgroup label="South Carolina">
+                                    <option value="81">(C-01) SC - Simpsonville</option>
+                                    <option value="27">(C-02) SC - Duncan</option>
+                                    <option value="29">(C-03) SC - Lake Wylie</option>
+                                </optgroup>
 
-                            </optgroup>
-                            <optgroup label="Nebraska">
-
-                            </optgroup>
-                            <optgroup label="North Carolina">
-
-                            </optgroup>
-                            <optgroup label="South Carolina">
-
-                            </optgroup>
-                            <optgroup label="Tennessee">
-
-                            </optgroup>
-                            <optgroup label="Virginia">
-
-                            </optgroup>
-                        </select>
+                                <optgroup label="Tennessee">
+                                    <option value="107">(A-08) TN - Petersburg</option>
+                                    <option value="102">(A-09) TN - Morrison</option>
+                                    <option value="61">(A-10) TN - Murfreesboro</option>
+                                    <option value="5">(A-11) TN - Spring Hill</option>
+                                    <option value="20">(A-12) TN - Columbia</option>
+                                    <option value="7">(A-13) TN - Summertown</option>
+                                    <option value="48">(AB-01) TN - Oak Ridge</option>
+                                    <option value="35">(AB-02) TN - Maryville</option>
+                                    <option value="10">(AB-03) TN - Athens</option>
+                                    <option value="18">(AB-04) TN - Dayton</option>
+                                    <option value="51">(AB-05) TN - Cleveland</option>
+                                    <option value="3">(C-14) TN - Knoxville</option>
+                                    <option value="57">(T-01) TN - Rockwood</option>
+                                    <option value="4">(T-02) TN - Crossville</option>
+                                    <option value="16">(T-03) TN - Monterey</option>
+                                    <option value="11">(T-04) TN - Cookeville</option>
+                                    <option value="92">(T-05) TN - Lebanon</option>
+                                    <option value="75">(T-06) TN - Portland</option>
+                                    <option value="73">(T-07) TN - Pleasant View</option>
+                                    <option value="100">(T-08) TN - Clarksville</option>
+                                    <option value="49">(T-09) TN - Dickson</option>
+                                    <option value="53">(T-10) TN - Centerville: TRex</option>
+                                    <option value="6">(T-11) TN - Centerville: Brushy</option>
+                                    <option value="37">(T-12) TN - Lobelville</option>
+                                    <option value="63">(T-15) TN - Memphis</option>
+                                    <option value="109">(T-16) TN - Finger</option>
+                                    <option value="82">(V-01) TN - Rogersville</option>
+                                    <option value="43">(V-02) TN - Kingsport</option>
+                                    <option value="25">(VB-01) TN - Dandridge</option>
+                                    <option value="31">(VB-02) TN - Limestone</option>
+                                    <option value="77">(VB-03) TN - Greeneville</option>
+                                    <option value="108">(VB-04) TN - Powell</option>
+                                </optgroup>         
+                                
+                                <optgroup label="Virginia">
+                                    <option value="33">(V-11) VA - Christeansburg</option>
+                                    <option value="36">(V-12) VA - Roanoke</option>
+                                    <option value="38">(V-13) VA - Appomattox</option>
+                                    <option value="40">(V-14) VA - Lynchburg</option>
+                                    <option value="42">(V-15) VA - Amherst</option>
+                                    <option value="187">(V-08) VA - Palmyra</option>
+                                    <option value="286">(V-09) VA - Madison</option>
+                                    <option value="21">(V-10) VA - Fredericksburg</option>
+                                </optgroup>
+                              
+                                
+                            </select>
                     </fieldset>
+                    <div class="form-navigation">
+                        <button type="button" class="button button-secondary back-button">Back</button>
+                            <button type="button" class="button button-primary next-button">Next</button>
+                    </div>
+                </div>
+
+                <!--step 3 -->
+                <div class="form-step">
                     <h2>Billing Address</h2>
+
                     <fieldset>
                         <div class="text-field-pair">
                             <label class="text-fieldlabel" for="address">Address 1</label>
@@ -112,20 +198,30 @@
                                 <label class="text-fieldlabel" for="zip">Zip</label>
                                 <input class="text-field" type="text" id="zip" name="zip" placeholder="12345">
                             </div>
+                            
+                            
                         </div>
                     </fieldset>
                     <fieldset>
-                        <input type="checkbox" id="phone-consent" name="phone-consent">
-                        <label for="phone-consent">Receive phone calls if there is a issue with your order</label>
+                        <div class="phone-consent">
+                            <input type="checkbox" id="phone-consent" name="phone-consent">
+                            <label for="phone-consent">Receive phone calls if there is a issue with your order</label>
+                        </div>
                         <div class="text-field-pair">
                             <label class="text-fieldlabel" for="phone-number">Phone</label>
                             <input class="text-field" type="text" id="phone-number" name="phone-number" placeholder="(123) 456-7890">
                         </div>
                     </fieldset>
-                    <input type="submit" value="Sign up" class="button button-primary">
+                    <div class="form-navigation">
+                        <button type="button" class="button button-secondary back-button">Back</button>
+                        <input type="submit" value="Sign up" class="button button-primary">
+                    </div>
+                </div>
                 </form>
             </section>
         </div>
     </main>
+
+    <script src="signup.js"></script>
 </body>
 </html>

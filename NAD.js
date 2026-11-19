@@ -143,7 +143,7 @@ function makeCard(product) {
   pack.textContent = product.package_size ? `Case · ${product.package_size}` : '';
   pack.hidden = !product.package_size;
 
-  card.querySelector('.name').textContent = product.product_name;
+  card.querySelector('.item-name').textContent = product.product_name;
 
   card.querySelector('.amount').innerHTML = formatPrice(product.price);
   const unit = card.querySelector('.unit');
@@ -233,3 +233,5 @@ statusEl.querySelector('.retry').addEventListener('click', loadProducts);
 
 // Start loading as soon as the script runs.
 loadProducts();
+
+
